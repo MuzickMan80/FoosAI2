@@ -1,0 +1,12 @@
+{
+	"folders": [
+		{
+			"path": "src/motion/firmware",
+			"name": "controller"
+		},
+		{
+			"path": "."
+		}
+	],
+	"settings": {}
+}
