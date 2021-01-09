@@ -52,7 +52,7 @@ class WebcamVideoStream:
             time.sleep(0.001);
 
         self.last_read = self.frame_index
-        return self.frame
+        return (self.grabbed, self.frame)
 
     def stop(self):
         # indicate that the thread should be stopped

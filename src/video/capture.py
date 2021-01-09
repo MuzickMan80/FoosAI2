@@ -1,7 +1,7 @@
 # Write your code here :-)
 import time
-from fps import FPS
-from webcam import WebcamVideoStream
+from util.fps import FPS
+from .webcam import WebcamVideoStream
 
 cam = WebcamVideoStream(0,resolution=(352,288),fps=30).start()
 time.sleep(2.0)
