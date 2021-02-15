@@ -8,6 +8,9 @@
   <material name="silver">
     <color rgba="0.5 0.5 0.5 1.0"/>
   </material>
+  <material name="yellow">
+    <color rgba="0.9 0.9 0.1 1.0"/>
+  </material>
   <link name="table">
     <visual>
       <origin xyz="0.000000 -0.355600 0.000000" rpy="0 0 0"/>
@@ -16,6 +19,12 @@
       </geometry>
       <material name="black"/>
     </visual>
+    <collision>
+      <origin xyz="0.000000 -0.355600 0.000000" rpy="0 0 0"/>
+      <geometry>
+        <box size="1.219200 0.025400 0.107950"/>
+      </geometry>
+    </collision>
     <visual>
       <origin xyz="0.000000 0.355600 0.000000" rpy="0 0 0"/>
       <geometry>
@@ -23,6 +32,12 @@
       </geometry>
       <material name="black"/>
     </visual>
+    <collision>
+      <origin xyz="0.000000 0.355600 0.000000" rpy="0 0 0"/>
+      <geometry>
+        <box size="1.219200 0.025400 0.107950"/>
+      </geometry>
+    </collision>
     <visual>
       <origin xyz="-0.622300 0.000000 0.000000" rpy="0 0 0"/>
       <geometry>
@@ -30,6 +45,12 @@
       </geometry>
       <material name="black"/>
     </visual>
+    <collision>
+      <origin xyz="-0.622300 0.000000 0.000000" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.025400 0.736600 0.107950"/>
+      </geometry>
+    </collision>
     <visual>
       <origin xyz="0.622300 0.000000 0.000000" rpy="0 0 0"/>
       <geometry>
@@ -38,9 +59,9 @@
       <material name="black"/>
     </visual>
     <collision>
-      <origin xyz="0.000000 0.000000 0.000000" rpy="0 0 0"/>
+      <origin xyz="0.622300 0.000000 0.000000" rpy="0 0 0"/>
       <geometry>
-        <box size="1.219200 0.685800 0.107950"/>
+        <box size="0.025400 0.736600 0.107950"/>
       </geometry>
     </collision>
   </link>
@@ -60,6 +81,7 @@
     </collision>
   </link>
   <joint name="floor_joint" type="fixed">
+    <origin xyz="0.000000 0.000000 0.000000" rpy="0 0 0"/>
     <parent link="table"/>
     <child link="floor"/>
   </joint>
@@ -67,7 +89,7 @@
     <visual>
       <origin xyz="-0.533400 0.000000 0.000000" rpy="1.570796 0 0"/>
       <geometry>
-        <cylinder radius="0.015000" length="1.524000"/>
+        <cylinder radius="0.009525" length="1.524000"/>
       </geometry>
       <material name="silver"/>
     </visual>
@@ -80,14 +102,21 @@
   </joint>
   <link name="rod1_man0">
     <visual>
-      <origin xyz="-0.533400 -0.206375 0.000000" rpy="0 0 0"/>
+      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
       <geometry>
-        <box size="0.025400 0.050800 0.107950"/>
+        <box size="0.012700 0.025400 0.114300"/>
       </geometry>
       <material name="yellow"/>
     </visual>
+    <collision>
+      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.012700 0.025400 0.114300"/>
+      </geometry>
+    </collision>
   </link>
   <joint name="rod1_man0_joint" type="continuous">
+    <origin xyz="-0.533400 -0.206375 0.000000" rpy="0 0 0"/>
     <axis xyz="0 1 0"/>
     <parent link="rod1"/>
     <child link="rod1_man0"/>
@@ -95,27 +124,41 @@
   </joint>
   <link name="rod1_man1">
     <visual>
-      <origin xyz="-0.533400 0.000000 0.000000" rpy="0 0 0"/>
+      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
       <geometry>
-        <box size="0.025400 0.050800 0.107950"/>
+        <box size="0.012700 0.025400 0.114300"/>
       </geometry>
       <material name="yellow"/>
     </visual>
+    <collision>
+      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.012700 0.025400 0.114300"/>
+      </geometry>
+    </collision>
   </link>
   <joint name="rod1_man1_joint" type="fixed">
+    <origin xyz="0.000000 0.206375 0.000000" rpy="0 0 0"/>
     <parent link="rod1_man0"/>
     <child link="rod1_man1"/>
   </joint>
   <link name="rod1_man2">
     <visual>
-      <origin xyz="-0.533400 0.206375 0.000000" rpy="0 0 0"/>
+      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
       <geometry>
-        <box size="0.025400 0.050800 0.107950"/>
+        <box size="0.012700 0.025400 0.114300"/>
       </geometry>
       <material name="yellow"/>
     </visual>
+    <collision>
+      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.012700 0.025400 0.114300"/>
+      </geometry>
+    </collision>
   </link>
   <joint name="rod1_man2_joint" type="fixed">
+    <origin xyz="0.000000 0.412750 0.000000" rpy="0 0 0"/>
     <parent link="rod1_man0"/>
     <child link="rod1_man2"/>
   </joint>
@@ -123,7 +166,7 @@
     <visual>
       <origin xyz="-0.381000 0.000000 0.000000" rpy="1.570796 0 0"/>
       <geometry>
-        <cylinder radius="0.015000" length="1.524000"/>
+        <cylinder radius="0.009525" length="1.524000"/>
       </geometry>
       <material name="silver"/>
     </visual>
@@ -136,14 +179,21 @@
   </joint>
   <link name="rod2_man0">
     <visual>
-      <origin xyz="-0.381000 -0.120650 0.000000" rpy="0 0 0"/>
+      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
       <geometry>
-        <box size="0.025400 0.050800 0.107950"/>
+        <box size="0.012700 0.025400 0.114300"/>
       </geometry>
       <material name="yellow"/>
     </visual>
+    <collision>
+      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.012700 0.025400 0.114300"/>
+      </geometry>
+    </collision>
   </link>
   <joint name="rod2_man0_joint" type="continuous">
+    <origin xyz="-0.381000 -0.120650 0.000000" rpy="0 0 0"/>
     <axis xyz="0 1 0"/>
     <parent link="rod2"/>
     <child link="rod2_man0"/>
@@ -151,14 +201,21 @@
   </joint>
   <link name="rod2_man1">
     <visual>
-      <origin xyz="-0.381000 0.120650 0.000000" rpy="0 0 0"/>
+      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
       <geometry>
-        <box size="0.025400 0.050800 0.107950"/>
+        <box size="0.012700 0.025400 0.114300"/>
       </geometry>
       <material name="yellow"/>
     </visual>
+    <collision>
+      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.012700 0.025400 0.114300"/>
+      </geometry>
+    </collision>
   </link>
   <joint name="rod2_man1_joint" type="fixed">
+    <origin xyz="0.000000 0.241300 0.000000" rpy="0 0 0"/>
     <parent link="rod2_man0"/>
     <child link="rod2_man1"/>
   </joint>
@@ -166,7 +223,7 @@
     <visual>
       <origin xyz="-0.228600 0.000000 0.000000" rpy="1.570796 0 0"/>
       <geometry>
-        <cylinder radius="0.015000" length="1.524000"/>
+        <cylinder radius="0.009525" length="1.524000"/>
       </geometry>
       <material name="silver"/>
     </visual>
@@ -179,14 +236,21 @@
   </joint>
   <link name="rod3_man0">
     <visual>
-      <origin xyz="-0.228600 -0.184150 0.000000" rpy="0 0 0"/>
+      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
       <geometry>
-        <box size="0.025400 0.050800 0.107950"/>
+        <box size="0.012700 0.025400 0.114300"/>
       </geometry>
-      <material name="yellow"/>
+      <material name="black"/>
     </visual>
+    <collision>
+      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.012700 0.025400 0.114300"/>
+      </geometry>
+    </collision>
   </link>
   <joint name="rod3_man0_joint" type="continuous">
+    <origin xyz="-0.228600 -0.184150 0.000000" rpy="0 0 0"/>
     <axis xyz="0 1 0"/>
     <parent link="rod3"/>
     <child link="rod3_man0"/>
@@ -194,27 +258,41 @@
   </joint>
   <link name="rod3_man1">
     <visual>
-      <origin xyz="-0.228600 0.000000 0.000000" rpy="0 0 0"/>
+      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
       <geometry>
-        <box size="0.025400 0.050800 0.107950"/>
+        <box size="0.012700 0.025400 0.114300"/>
       </geometry>
-      <material name="yellow"/>
+      <material name="black"/>
     </visual>
+    <collision>
+      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.012700 0.025400 0.114300"/>
+      </geometry>
+    </collision>
   </link>
   <joint name="rod3_man1_joint" type="fixed">
+    <origin xyz="0.000000 0.184150 0.000000" rpy="0 0 0"/>
     <parent link="rod3_man0"/>
     <child link="rod3_man1"/>
   </joint>
   <link name="rod3_man2">
     <visual>
-      <origin xyz="-0.228600 0.184150 0.000000" rpy="0 0 0"/>
+      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
       <geometry>
-        <box size="0.025400 0.050800 0.107950"/>
+        <box size="0.012700 0.025400 0.114300"/>
       </geometry>
-      <material name="yellow"/>
+      <material name="black"/>
     </visual>
+    <collision>
+      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.012700 0.025400 0.114300"/>
+      </geometry>
+    </collision>
   </link>
   <joint name="rod3_man2_joint" type="fixed">
+    <origin xyz="0.000000 0.368300 0.000000" rpy="0 0 0"/>
     <parent link="rod3_man0"/>
     <child link="rod3_man2"/>
   </joint>
@@ -222,7 +300,7 @@
     <visual>
       <origin xyz="-0.076200 0.000000 0.000000" rpy="1.570796 0 0"/>
       <geometry>
-        <cylinder radius="0.015000" length="1.524000"/>
+        <cylinder radius="0.009525" length="1.524000"/>
       </geometry>
       <material name="silver"/>
     </visual>
@@ -235,14 +313,21 @@
   </joint>
   <link name="rod4_man0">
     <visual>
-      <origin xyz="-0.076200 -0.241300 0.000000" rpy="0 0 0"/>
+      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
       <geometry>
-        <box size="0.025400 0.050800 0.107950"/>
+        <box size="0.012700 0.025400 0.114300"/>
       </geometry>
       <material name="yellow"/>
     </visual>
+    <collision>
+      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.012700 0.025400 0.114300"/>
+      </geometry>
+    </collision>
   </link>
   <joint name="rod4_man0_joint" type="continuous">
+    <origin xyz="-0.076200 -0.241300 0.000000" rpy="0 0 0"/>
     <axis xyz="0 1 0"/>
     <parent link="rod4"/>
     <child link="rod4_man0"/>
@@ -250,53 +335,81 @@
   </joint>
   <link name="rod4_man1">
     <visual>
-      <origin xyz="-0.076200 -0.120650 0.000000" rpy="0 0 0"/>
+      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
       <geometry>
-        <box size="0.025400 0.050800 0.107950"/>
+        <box size="0.012700 0.025400 0.114300"/>
       </geometry>
       <material name="yellow"/>
     </visual>
+    <collision>
+      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.012700 0.025400 0.114300"/>
+      </geometry>
+    </collision>
   </link>
   <joint name="rod4_man1_joint" type="fixed">
+    <origin xyz="0.000000 0.120650 0.000000" rpy="0 0 0"/>
     <parent link="rod4_man0"/>
     <child link="rod4_man1"/>
   </joint>
   <link name="rod4_man2">
     <visual>
-      <origin xyz="-0.076200 0.000000 0.000000" rpy="0 0 0"/>
+      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
       <geometry>
-        <box size="0.025400 0.050800 0.107950"/>
+        <box size="0.012700 0.025400 0.114300"/>
       </geometry>
       <material name="yellow"/>
     </visual>
+    <collision>
+      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.012700 0.025400 0.114300"/>
+      </geometry>
+    </collision>
   </link>
   <joint name="rod4_man2_joint" type="fixed">
+    <origin xyz="0.000000 0.241300 0.000000" rpy="0 0 0"/>
     <parent link="rod4_man0"/>
     <child link="rod4_man2"/>
   </joint>
   <link name="rod4_man3">
     <visual>
-      <origin xyz="-0.076200 0.120650 0.000000" rpy="0 0 0"/>
+      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
       <geometry>
-        <box size="0.025400 0.050800 0.107950"/>
+        <box size="0.012700 0.025400 0.114300"/>
       </geometry>
       <material name="yellow"/>
     </visual>
+    <collision>
+      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.012700 0.025400 0.114300"/>
+      </geometry>
+    </collision>
   </link>
   <joint name="rod4_man3_joint" type="fixed">
+    <origin xyz="0.000000 0.361950 0.000000" rpy="0 0 0"/>
     <parent link="rod4_man0"/>
     <child link="rod4_man3"/>
   </joint>
   <link name="rod4_man4">
     <visual>
-      <origin xyz="-0.076200 0.241300 0.000000" rpy="0 0 0"/>
+      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
       <geometry>
-        <box size="0.025400 0.050800 0.107950"/>
+        <box size="0.012700 0.025400 0.114300"/>
       </geometry>
       <material name="yellow"/>
     </visual>
+    <collision>
+      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.012700 0.025400 0.114300"/>
+      </geometry>
+    </collision>
   </link>
   <joint name="rod4_man4_joint" type="fixed">
+    <origin xyz="0.000000 0.482600 0.000000" rpy="0 0 0"/>
     <parent link="rod4_man0"/>
     <child link="rod4_man4"/>
   </joint>
@@ -304,7 +417,7 @@
     <visual>
       <origin xyz="0.076200 0.000000 0.000000" rpy="1.570796 0 0"/>
       <geometry>
-        <cylinder radius="0.015000" length="1.524000"/>
+        <cylinder radius="0.009525" length="1.524000"/>
       </geometry>
       <material name="silver"/>
     </visual>
@@ -317,14 +430,21 @@
   </joint>
   <link name="rod5_man0">
     <visual>
-      <origin xyz="0.076200 -0.241300 0.000000" rpy="0 0 0"/>
+      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
       <geometry>
-        <box size="0.025400 0.050800 0.107950"/>
+        <box size="0.012700 0.025400 0.114300"/>
       </geometry>
-      <material name="yellow"/>
+      <material name="black"/>
     </visual>
+    <collision>
+      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.012700 0.025400 0.114300"/>
+      </geometry>
+    </collision>
   </link>
   <joint name="rod5_man0_joint" type="continuous">
+    <origin xyz="0.076200 -0.241300 0.000000" rpy="0 0 0"/>
     <axis xyz="0 1 0"/>
     <parent link="rod5"/>
     <child link="rod5_man0"/>
@@ -332,53 +452,81 @@
   </joint>
   <link name="rod5_man1">
     <visual>
-      <origin xyz="0.076200 -0.120650 0.000000" rpy="0 0 0"/>
+      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
       <geometry>
-        <box size="0.025400 0.050800 0.107950"/>
+        <box size="0.012700 0.025400 0.114300"/>
       </geometry>
-      <material name="yellow"/>
+      <material name="black"/>
     </visual>
+    <collision>
+      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.012700 0.025400 0.114300"/>
+      </geometry>
+    </collision>
   </link>
   <joint name="rod5_man1_joint" type="fixed">
+    <origin xyz="0.000000 0.120650 0.000000" rpy="0 0 0"/>
     <parent link="rod5_man0"/>
     <child link="rod5_man1"/>
   </joint>
   <link name="rod5_man2">
     <visual>
-      <origin xyz="0.076200 0.000000 0.000000" rpy="0 0 0"/>
+      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
       <geometry>
-        <box size="0.025400 0.050800 0.107950"/>
+        <box size="0.012700 0.025400 0.114300"/>
       </geometry>
-      <material name="yellow"/>
+      <material name="black"/>
     </visual>
+    <collision>
+      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.012700 0.025400 0.114300"/>
+      </geometry>
+    </collision>
   </link>
   <joint name="rod5_man2_joint" type="fixed">
+    <origin xyz="0.000000 0.241300 0.000000" rpy="0 0 0"/>
     <parent link="rod5_man0"/>
     <child link="rod5_man2"/>
   </joint>
   <link name="rod5_man3">
     <visual>
-      <origin xyz="0.076200 0.120650 0.000000" rpy="0 0 0"/>
+      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
       <geometry>
-        <box size="0.025400 0.050800 0.107950"/>
+        <box size="0.012700 0.025400 0.114300"/>
       </geometry>
-      <material name="yellow"/>
+      <material name="black"/>
     </visual>
+    <collision>
+      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.012700 0.025400 0.114300"/>
+      </geometry>
+    </collision>
   </link>
   <joint name="rod5_man3_joint" type="fixed">
+    <origin xyz="0.000000 0.361950 0.000000" rpy="0 0 0"/>
     <parent link="rod5_man0"/>
     <child link="rod5_man3"/>
   </joint>
   <link name="rod5_man4">
     <visual>
-      <origin xyz="0.076200 0.241300 0.000000" rpy="0 0 0"/>
+      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
       <geometry>
-        <box size="0.025400 0.050800 0.107950"/>
+        <box size="0.012700 0.025400 0.114300"/>
       </geometry>
-      <material name="yellow"/>
+      <material name="black"/>
     </visual>
+    <collision>
+      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.012700 0.025400 0.114300"/>
+      </geometry>
+    </collision>
   </link>
   <joint name="rod5_man4_joint" type="fixed">
+    <origin xyz="0.000000 0.482600 0.000000" rpy="0 0 0"/>
     <parent link="rod5_man0"/>
     <child link="rod5_man4"/>
   </joint>
@@ -386,7 +534,7 @@
     <visual>
       <origin xyz="0.228600 0.000000 0.000000" rpy="1.570796 0 0"/>
       <geometry>
-        <cylinder radius="0.015000" length="1.524000"/>
+        <cylinder radius="0.009525" length="1.524000"/>
       </geometry>
       <material name="silver"/>
     </visual>
@@ -399,14 +547,21 @@
   </joint>
   <link name="rod6_man0">
     <visual>
-      <origin xyz="0.228600 -0.184150 0.000000" rpy="0 0 0"/>
+      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
       <geometry>
-        <box size="0.025400 0.050800 0.107950"/>
+        <box size="0.012700 0.025400 0.114300"/>
       </geometry>
       <material name="yellow"/>
     </visual>
+    <collision>
+      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.012700 0.025400 0.114300"/>
+      </geometry>
+    </collision>
   </link>
   <joint name="rod6_man0_joint" type="continuous">
+    <origin xyz="0.228600 -0.184150 0.000000" rpy="0 0 0"/>
     <axis xyz="0 1 0"/>
     <parent link="rod6"/>
     <child link="rod6_man0"/>
@@ -414,27 +569,41 @@
   </joint>
   <link name="rod6_man1">
     <visual>
-      <origin xyz="0.228600 0.000000 0.000000" rpy="0 0 0"/>
+      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
       <geometry>
-        <box size="0.025400 0.050800 0.107950"/>
+        <box size="0.012700 0.025400 0.114300"/>
       </geometry>
       <material name="yellow"/>
     </visual>
+    <collision>
+      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.012700 0.025400 0.114300"/>
+      </geometry>
+    </collision>
   </link>
   <joint name="rod6_man1_joint" type="fixed">
+    <origin xyz="0.000000 0.184150 0.000000" rpy="0 0 0"/>
     <parent link="rod6_man0"/>
     <child link="rod6_man1"/>
   </joint>
   <link name="rod6_man2">
     <visual>
-      <origin xyz="0.228600 0.184150 0.000000" rpy="0 0 0"/>
+      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
       <geometry>
-        <box size="0.025400 0.050800 0.107950"/>
+        <box size="0.012700 0.025400 0.114300"/>
       </geometry>
       <material name="yellow"/>
     </visual>
+    <collision>
+      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.012700 0.025400 0.114300"/>
+      </geometry>
+    </collision>
   </link>
   <joint name="rod6_man2_joint" type="fixed">
+    <origin xyz="0.000000 0.368300 0.000000" rpy="0 0 0"/>
     <parent link="rod6_man0"/>
     <child link="rod6_man2"/>
   </joint>
@@ -442,7 +611,7 @@
     <visual>
       <origin xyz="0.381000 0.000000 0.000000" rpy="1.570796 0 0"/>
       <geometry>
-        <cylinder radius="0.015000" length="1.524000"/>
+        <cylinder radius="0.009525" length="1.524000"/>
       </geometry>
       <material name="silver"/>
     </visual>
@@ -455,14 +624,21 @@
   </joint>
   <link name="rod7_man0">
     <visual>
-      <origin xyz="0.381000 -0.120650 0.000000" rpy="0 0 0"/>
+      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
       <geometry>
-        <box size="0.025400 0.050800 0.107950"/>
+        <box size="0.012700 0.025400 0.114300"/>
       </geometry>
-      <material name="yellow"/>
+      <material name="black"/>
     </visual>
+    <collision>
+      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.012700 0.025400 0.114300"/>
+      </geometry>
+    </collision>
   </link>
   <joint name="rod7_man0_joint" type="continuous">
+    <origin xyz="0.381000 -0.120650 0.000000" rpy="0 0 0"/>
     <axis xyz="0 1 0"/>
     <parent link="rod7"/>
     <child link="rod7_man0"/>
@@ -470,14 +646,21 @@
   </joint>
   <link name="rod7_man1">
     <visual>
-      <origin xyz="0.381000 0.120650 0.000000" rpy="0 0 0"/>
+      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
       <geometry>
-        <box size="0.025400 0.050800 0.107950"/>
+        <box size="0.012700 0.025400 0.114300"/>
       </geometry>
-      <material name="yellow"/>
+      <material name="black"/>
     </visual>
+    <collision>
+      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.012700 0.025400 0.114300"/>
+      </geometry>
+    </collision>
   </link>
   <joint name="rod7_man1_joint" type="fixed">
+    <origin xyz="0.000000 0.241300 0.000000" rpy="0 0 0"/>
     <parent link="rod7_man0"/>
     <child link="rod7_man1"/>
   </joint>
@@ -485,7 +668,7 @@
     <visual>
       <origin xyz="0.533400 0.000000 0.000000" rpy="1.570796 0 0"/>
       <geometry>
-        <cylinder radius="0.015000" length="1.524000"/>
+        <cylinder radius="0.009525" length="1.524000"/>
       </geometry>
       <material name="silver"/>
     </visual>
@@ -498,14 +681,21 @@
   </joint>
   <link name="rod8_man0">
     <visual>
-      <origin xyz="0.533400 -0.206375 0.000000" rpy="0 0 0"/>
+      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
       <geometry>
-        <box size="0.025400 0.050800 0.107950"/>
+        <box size="0.012700 0.025400 0.114300"/>
       </geometry>
-      <material name="yellow"/>
+      <material name="black"/>
     </visual>
+    <collision>
+      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.012700 0.025400 0.114300"/>
+      </geometry>
+    </collision>
   </link>
   <joint name="rod8_man0_joint" type="continuous">
+    <origin xyz="0.533400 -0.206375 0.000000" rpy="0 0 0"/>
     <axis xyz="0 1 0"/>
     <parent link="rod8"/>
     <child link="rod8_man0"/>
@@ -513,27 +703,41 @@
   </joint>
   <link name="rod8_man1">
     <visual>
-      <origin xyz="0.533400 0.000000 0.000000" rpy="0 0 0"/>
+      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
       <geometry>
-        <box size="0.025400 0.050800 0.107950"/>
+        <box size="0.012700 0.025400 0.114300"/>
       </geometry>
-      <material name="yellow"/>
+      <material name="black"/>
     </visual>
+    <collision>
+      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.012700 0.025400 0.114300"/>
+      </geometry>
+    </collision>
   </link>
   <joint name="rod8_man1_joint" type="fixed">
+    <origin xyz="0.000000 0.206375 0.000000" rpy="0 0 0"/>
     <parent link="rod8_man0"/>
     <child link="rod8_man1"/>
   </joint>
   <link name="rod8_man2">
     <visual>
-      <origin xyz="0.533400 0.206375 0.000000" rpy="0 0 0"/>
+      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
       <geometry>
-        <box size="0.025400 0.050800 0.107950"/>
+        <box size="0.012700 0.025400 0.114300"/>
       </geometry>
-      <material name="yellow"/>
+      <material name="black"/>
     </visual>
+    <collision>
+      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.012700 0.025400 0.114300"/>
+      </geometry>
+    </collision>
   </link>
   <joint name="rod8_man2_joint" type="fixed">
+    <origin xyz="0.000000 0.412750 0.000000" rpy="0 0 0"/>
     <parent link="rod8_man0"/>
     <child link="rod8_man2"/>
   </joint>

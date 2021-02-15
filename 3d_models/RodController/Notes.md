@@ -17,9 +17,14 @@
 ## Bracket
 Works pretty well.  Sometimes a little difficult to get off.
 * Consider adding a way to clamp to table bottom to prevent rotation
+## Rotation Servo
+* Instead of a stepper, to keep costs down, I'm considering a 3d printed servo.
+* [4x 550 motor $16](https://www.amazon.com/URBEST-6000RPM-Magnetic-Motor-Smart/dp/B082Y35RC9/ref=cm_cr_arp_d_product_top?ie=UTF8)
+* [2x ]
+* [1x Arduino Uno $14]()
 ## BOM
 * [4x Rail MGN12H - 450mm $58](https://www.amazon.com/gp/product/B077MFSF5F/ref=ppx_yo_dt_b_asin_title_o08_s00?ie=UTF8&psc=1)
 * [1x GT2 Timing Belt, Gear and Idler $15](https://www.amazon.com/gp/product/B07Z51RKQ7/ref=ppx_yo_dt_b_asin_title_o08_s01?ie=UTF8&psc=1)
-* [2x Controller $59](https://www.amazon.com/gp/product/B08HVCG1YB/ref=ppx_yo_dt_b_asin_title_o08_s01?ie=UTF8&psc=1)
+* [2x Controller $72](https://www.amazon.com/gp/product/B08HVCG1YB/ref=ppx_yo_dt_b_asin_title_o08_s01?ie=UTF8&psc=1)
 * [8x Nema 17 Stepper Motor 42N.cm $64](https://www.amazon.com/gp/product/B07KW7F3P9/ref=ppx_yo_dt_b_asin_title_o08_s02?ie=UTF8&psc=1)
-* Total cost per side: $195
+* Total cost per side: $207

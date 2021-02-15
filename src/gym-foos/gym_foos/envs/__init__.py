@@ -1,0 +1,1 @@
+from gym_foos.envs.foos_env import FoosEnv

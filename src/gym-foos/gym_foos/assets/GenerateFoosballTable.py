@@ -11,6 +11,10 @@ goalWidth = 8.25 * metersPerInch
 goalHeight = 3 * metersPerInch
 rodDistance = 6 * metersPerInch
 rodLength = 60 * metersPerInch
+manWidth = 1 * metersPerInch
+manDepth = 0.5 * metersPerInch
+manHeight = 3.5 * metersPerInch
+manOffset = 1.5 * metersPerInch
 
 def stag(tagname, attributeDict={}):
     global indent
@@ -66,8 +70,9 @@ def visualCylinder(color, x, y, z, radius, length, rpy='0 0 0'):
     materialRef(color)
     etag('visual')
 
-def fixedJoint(name, parent, child):
+def fixedJoint(name, parent, child, x=0, y=0, z=0, rpy='0 0 0'):
     stag('joint', {'name': name, 'type': 'fixed'})
+    ctag('origin', {'xyz': f'{x:f} {y:f} {z:f}', 'rpy': rpy})
     ctag('parent', {'link': parent})
     ctag('child', {'link': child})
     etag('joint')
@@ -80,8 +85,9 @@ def prismaticJoint(name, parent, child):
     ctag('limit', {'effort': 100, 'velocity': 100})
     etag('joint')
 
-def continuousJoint(name, parent, child):
+def continuousJoint(name, parent, child, x=0, y=0, z=0, rpy='0 0 0'):
     stag('joint', {'name': name, 'type': 'continuous'})
+    ctag('origin', {'xyz': f'{x:f} {y:f} {z:f}', 'rpy': rpy})
     ctag('axis', {'xyz': '0 1 0'})
     ctag('parent', {'link': parent})
     ctag('child', {'link': child})
@@ -91,10 +97,13 @@ def continuousJoint(name, parent, child):
 def table():
     stag('link', {'name': 'table'})
     visualBox('black', 0, -(tableDepth+wall)/2, 0, tableWidth, wall, tableHeight)
+    collisionBox(      0, -(tableDepth+wall)/2, 0, tableWidth, wall, tableHeight)
     visualBox('black', 0,  (tableDepth+wall)/2, 0, tableWidth, wall, tableHeight)
+    collisionBox(      0,  (tableDepth+wall)/2, 0, tableWidth, wall, tableHeight)
     visualBox('black', -(tableWidth+wall)/2, 0, 0, wall, tableDepth + wall*2, tableHeight)
+    collisionBox(      -(tableWidth+wall)/2, 0, 0, wall, tableDepth + wall*2, tableHeight)
     visualBox('black',  (tableWidth+wall)/2, 0, 0, wall, tableDepth + wall*2, tableHeight)
-    collisionBox(0, 0, 0, tableWidth, tableDepth, tableHeight)
+    collisionBox(       (tableWidth+wall)/2, 0, 0, wall, tableDepth + wall*2, tableHeight)
     etag('link')
     stag('link', {'name': 'floor'})
     visualBox('green', 0, 0, -(tableHeight+wall)/2, tableWidth+wall*2, tableDepth+wall*2, wall)
@@ -102,22 +111,25 @@ def table():
     etag('link')
     fixedJoint('floor_joint', 'table', 'floor')
 
-def man(rodIndex, manIndex, xOffset, yOffset):
+def man(rodIndex, manIndex, color, xOffset, yOffset):
     stag('link', {'name': f'rod{rodIndex}_man{manIndex}'})
-    visualBox('yellow', xOffset, yOffset, 0, wall, wall*2, tableHeight)
+    visualBox(color, 0, 0, -manOffset, manDepth, manWidth, manHeight)
+    collisionBox(       0, 0, -manOffset, manDepth, manWidth, manHeight)
     etag('link')
     if manIndex == 0:
-        continuousJoint(f'rod{rodIndex}_man{manIndex}_joint', f'rod{rodIndex}', f'rod{rodIndex}_man{manIndex}')
+        continuousJoint(f'rod{rodIndex}_man{manIndex}_joint', f'rod{rodIndex}', f'rod{rodIndex}_man{manIndex}', xOffset, yOffset)
     else:
-        fixedJoint(f'rod{rodIndex}_man{manIndex}_joint', f'rod{rodIndex}_man0', f'rod{rodIndex}_man{manIndex}')
+        fixedJoint(f'rod{rodIndex}_man{manIndex}_joint', f'rod{rodIndex}_man0', f'rod{rodIndex}_man{manIndex}', 0, yOffset)
 
-def rod(index, xOffset, menPositions=[0]):
+def rod(index, color, xOffset, manCount, manDistance):
     stag('link', {'name': f'rod{index}'})
-    visualCylinder('silver', xOffset, 0, 0, .015, rodLength, f'{math.pi/2:f} 0 0')
+    visualCylinder('silver', xOffset, 0, 0, metersPerInch*3/8, rodLength, f'{math.pi/2:f} 0 0')
     etag('link')
     prismaticJoint(f'rod{index}_joint', 'table', f'rod{index}')
-    for manIndex in range(len(menPositions)):
-        man(index, manIndex, xOffset, menPositions[manIndex])
+    yOffset = -manDistance * (manCount-1) / 2
+    man(index, 0, color, xOffset, yOffset)
+    for manIndex in range(1, manCount):
+        man(index, manIndex, color, xOffset, manDistance * manIndex)
 
 import sys
 
@@ -129,19 +141,22 @@ stag('robot', {'name': 'foosball_table'})
 material('black', '0.1 0.1 0.1 1.0')
 material('green', '0.1 0.4 0.1 1.0')
 material('silver','0.5 0.5 0.5 1.0')
-material('yellow','0.5 0.5 0.1 1.0')
+material('yellow','0.9 0.9 0.1 1.0')
 table()
 goalieDistance =   8.125*metersPerInch
 twomanDistance =   9.500*metersPerInch
 fivebarDistance =  4.750*metersPerInch
 threemanDistance = 7.250*metersPerInch
-rod(1, rodDistance * -3.5, [-goalieDistance, 0, goalieDistance])
-rod(2, rodDistance * -2.5, [-twomanDistance/2, twomanDistance/2])
-rod(3, rodDistance * -1.5, [-threemanDistance, 0, threemanDistance])
-rod(4, rodDistance * -0.5, [-fivebarDistance*2, -fivebarDistance, 0, fivebarDistance, fivebarDistance*2])
-rod(5, rodDistance *  0.5, [-fivebarDistance*2, -fivebarDistance, 0, fivebarDistance, fivebarDistance*2])
-rod(6, rodDistance *  1.5, [-threemanDistance, 0, threemanDistance])
-rod(7, rodDistance *  2.5, [-twomanDistance/2, twomanDistance/2])
-rod(8, rodDistance *  3.5, [-goalieDistance, 0, goalieDistance])
+rod(1, 'yellow', rodDistance * -3.5, 3, goalieDistance)
+rod(2, 'yellow', rodDistance * -2.5, 2, twomanDistance)
+rod(3, 'black',  rodDistance * -1.5, 3, threemanDistance)
+rod(4, 'yellow', rodDistance * -0.5, 5, fivebarDistance)
+rod(5, 'black',  rodDistance *  0.5, 5, fivebarDistance)
+rod(6, 'yellow', rodDistance *  1.5, 3, threemanDistance)
+rod(7, 'black',  rodDistance *  2.5, 2, twomanDistance)
+rod(8, 'black',  rodDistance *  3.5, 3, goalieDistance)
 #floor()
 etag('robot')
+
+sys.stdout = orig_stdout
+f.close()
