@@ -40,18 +40,17 @@ class FoosEnv(gym.Env):
     goal_offset = .02
     reward = 0
 
-    print(ball_ob)
     x,y,vx,vy=ball_ob
-    if (x > (1-goal_offset) and y > (0.5-goal_width/2) and y < (0.5+goal_width/2)):
+    if (x > (1-goal_offset) and y > (-goal_width/2) and y < (0.5+goal_width/2)):
       self.done = True
       reward = 100
     
-    if (x < (-1+goal_offset) and y > (0.5-goal_width/2) and y < (0.5+goal_width/2)):
+    if (x < (-1+goal_offset) and y > (-goal_width/2) and y < (0.5+goal_width/2)):
       self.done = True
       reward = -100
 
     self.step_count = self.step_count+1
-    if self.step_count >= 1000:
+    if self.step_count >= 200:
       self.done = True
 
     ob = np.array(ball_ob, dtype=np.float32)

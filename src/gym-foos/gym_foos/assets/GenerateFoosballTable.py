@@ -5,16 +5,17 @@ indent = 0
 metersPerInch = 0.0254
 tableWidth = 48 * metersPerInch
 tableDepth = 27 * metersPerInch
-tableHeight = 4.25 * metersPerInch
+tableHeight = 6.25 * metersPerInch #4.25 * metersPerInch
 wall = 1 * metersPerInch
 goalWidth = 8.25 * metersPerInch
 goalHeight = 3 * metersPerInch
 rodDistance = 6 * metersPerInch
 rodLength = 60 * metersPerInch
+rodDiameter = 3/8 * metersPerInch
 manWidth = 1 * metersPerInch
 manDepth = 0.5 * metersPerInch
-manHeight = 3.5 * metersPerInch
-manOffset = 1.5 * metersPerInch
+manHeight = 4.0 * metersPerInch
+manOffset = 1.0 * metersPerInch
 
 def stag(tagname, attributeDict={}):
     global indent
@@ -94,8 +95,15 @@ def continuousJoint(name, parent, child, x=0, y=0, z=0, rpy='0 0 0'):
     ctag('limit', {'effort': 100, 'velocity': 100})
     etag('joint')
 
+def inertial():
+    stag('inertial')
+    ctag('mass', {'value': 1})
+    ctag('inertia', {'ixx': 1, 'ixy': 0, 'ixz':0, 'iyy':1, 'iyz':0, 'izz':1})
+    etag('inertial')
+
 def table():
     stag('link', {'name': 'table'})
+    inertial()
     visualBox('black', 0, -(tableDepth+wall)/2, 0, tableWidth, wall, tableHeight)
     collisionBox(      0, -(tableDepth+wall)/2, 0, tableWidth, wall, tableHeight)
     visualBox('black', 0,  (tableDepth+wall)/2, 0, tableWidth, wall, tableHeight)
@@ -106,6 +114,7 @@ def table():
     collisionBox(       (tableWidth+wall)/2, 0, 0, wall, tableDepth + wall*2, tableHeight)
     etag('link')
     stag('link', {'name': 'floor'})
+    inertial()
     visualBox('green', 0, 0, -(tableHeight+wall)/2, tableWidth+wall*2, tableDepth+wall*2, wall)
     collisionBox(      0, 0, -(tableHeight+wall)/2, tableWidth+wall*2, tableDepth+wall*2, wall)
     etag('link')
@@ -113,6 +122,7 @@ def table():
 
 def man(rodIndex, manIndex, color, xOffset, yOffset):
     stag('link', {'name': f'rod{rodIndex}_man{manIndex}'})
+    inertial()
     visualBox(color, 0, 0, -manOffset, manDepth, manWidth, manHeight)
     collisionBox(       0, 0, -manOffset, manDepth, manWidth, manHeight)
     etag('link')
@@ -123,7 +133,8 @@ def man(rodIndex, manIndex, color, xOffset, yOffset):
 
 def rod(index, color, xOffset, manCount, manDistance):
     stag('link', {'name': f'rod{index}'})
-    visualCylinder('silver', xOffset, 0, 0, metersPerInch*3/8, rodLength, f'{math.pi/2:f} 0 0')
+    inertial()
+    visualCylinder('silver', xOffset, 0, 0, rodDiameter, rodLength, f'{math.pi/2:f} 0 0')
     etag('link')
     prismaticJoint(f'rod{index}_joint', 'table', f'rod{index}')
     yOffset = -manDistance * (manCount-1) / 2

@@ -11,8 +11,9 @@ class Table:
                                 physicsClientId=client,
                                 useFixedBase=1)
         f_name = os.path.join(os.path.dirname(__file__),'../assets/FoosballBall.urdf')
+        ball_pos = np.random.uniform(-.25,.25)
         self.ball = p.loadURDF(fileName=f_name,
-                                basePosition=[-.05, 0, 0.15],
+                                basePosition=[-.05, ball_pos, 0.125],
                                 physicsClientId=client)
 
         self.tran_joints = [1,5,8,12,18,24,28,31]

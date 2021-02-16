@@ -12,69 +12,77 @@
     <color rgba="0.9 0.9 0.1 1.0"/>
   </material>
   <link name="table">
+    <inertial>
+      <mass value="1"/>
+      <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1"/>
+    </inertial>
     <visual>
       <origin xyz="0.000000 -0.355600 0.000000" rpy="0 0 0"/>
       <geometry>
-        <box size="1.219200 0.025400 0.107950"/>
+        <box size="1.219200 0.025400 0.158750"/>
       </geometry>
       <material name="black"/>
     </visual>
     <collision>
       <origin xyz="0.000000 -0.355600 0.000000" rpy="0 0 0"/>
       <geometry>
-        <box size="1.219200 0.025400 0.107950"/>
+        <box size="1.219200 0.025400 0.158750"/>
       </geometry>
     </collision>
     <visual>
       <origin xyz="0.000000 0.355600 0.000000" rpy="0 0 0"/>
       <geometry>
-        <box size="1.219200 0.025400 0.107950"/>
+        <box size="1.219200 0.025400 0.158750"/>
       </geometry>
       <material name="black"/>
     </visual>
     <collision>
       <origin xyz="0.000000 0.355600 0.000000" rpy="0 0 0"/>
       <geometry>
-        <box size="1.219200 0.025400 0.107950"/>
+        <box size="1.219200 0.025400 0.158750"/>
       </geometry>
     </collision>
     <visual>
       <origin xyz="-0.622300 0.000000 0.000000" rpy="0 0 0"/>
       <geometry>
-        <box size="0.025400 0.736600 0.107950"/>
+        <box size="0.025400 0.736600 0.158750"/>
       </geometry>
       <material name="black"/>
     </visual>
     <collision>
       <origin xyz="-0.622300 0.000000 0.000000" rpy="0 0 0"/>
       <geometry>
-        <box size="0.025400 0.736600 0.107950"/>
+        <box size="0.025400 0.736600 0.158750"/>
       </geometry>
     </collision>
     <visual>
       <origin xyz="0.622300 0.000000 0.000000" rpy="0 0 0"/>
       <geometry>
-        <box size="0.025400 0.736600 0.107950"/>
+        <box size="0.025400 0.736600 0.158750"/>
       </geometry>
       <material name="black"/>
     </visual>
     <collision>
       <origin xyz="0.622300 0.000000 0.000000" rpy="0 0 0"/>
       <geometry>
-        <box size="0.025400 0.736600 0.107950"/>
+        <box size="0.025400 0.736600 0.158750"/>
       </geometry>
     </collision>
   </link>
   <link name="floor">
+    <inertial>
+      <mass value="1"/>
+      <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1"/>
+    </inertial>
     <visual>
-      <origin xyz="0.000000 0.000000 -0.066675" rpy="0 0 0"/>
+      <origin xyz="0.000000 0.000000 -0.092075" rpy="0 0 0"/>
       <geometry>
         <box size="1.270000 0.736600 0.025400"/>
       </geometry>
       <material name="green"/>
     </visual>
     <collision>
-      <origin xyz="0.000000 0.000000 -0.066675" rpy="0 0 0"/>
+      <origin xyz="0.000000 0.000000 -0.092075" rpy="0 0 0"/>
       <geometry>
         <box size="1.270000 0.736600 0.025400"/>
       </geometry>
@@ -86,6 +94,10 @@
     <child link="floor"/>
   </joint>
   <link name="rod1">
+    <inertial>
+      <mass value="1"/>
+      <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1"/>
+    </inertial>
     <visual>
       <origin xyz="-0.533400 0.000000 0.000000" rpy="1.570796 0 0"/>
       <geometry>
@@ -101,17 +113,21 @@
     <limit effort="100" velocity="100"/>
   </joint>
   <link name="rod1_man0">
+    <inertial>
+      <mass value="1"/>
+      <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1"/>
+    </inertial>
     <visual>
-      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
+      <origin xyz="0.000000 0.000000 -0.025400" rpy="0 0 0"/>
       <geometry>
-        <box size="0.012700 0.025400 0.114300"/>
+        <box size="0.012700 0.025400 0.101600"/>
       </geometry>
       <material name="yellow"/>
     </visual>
     <collision>
-      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
+      <origin xyz="0.000000 0.000000 -0.025400" rpy="0 0 0"/>
       <geometry>
-        <box size="0.012700 0.025400 0.114300"/>
+        <box size="0.012700 0.025400 0.101600"/>
       </geometry>
     </collision>
   </link>
@@ -123,17 +139,21 @@
     <limit effort="100" velocity="100"/>
   </joint>
   <link name="rod1_man1">
+    <inertial>
+      <mass value="1"/>
+      <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1"/>
+    </inertial>
     <visual>
-      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
+      <origin xyz="0.000000 0.000000 -0.025400" rpy="0 0 0"/>
       <geometry>
-        <box size="0.012700 0.025400 0.114300"/>
+        <box size="0.012700 0.025400 0.101600"/>
       </geometry>
       <material name="yellow"/>
     </visual>
     <collision>
-      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
+      <origin xyz="0.000000 0.000000 -0.025400" rpy="0 0 0"/>
       <geometry>
-        <box size="0.012700 0.025400 0.114300"/>
+        <box size="0.012700 0.025400 0.101600"/>
       </geometry>
     </collision>
   </link>
@@ -143,17 +163,21 @@
     <child link="rod1_man1"/>
   </joint>
   <link name="rod1_man2">
+    <inertial>
+      <mass value="1"/>
+      <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1"/>
+    </inertial>
     <visual>
-      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
+      <origin xyz="0.000000 0.000000 -0.025400" rpy="0 0 0"/>
       <geometry>
-        <box size="0.012700 0.025400 0.114300"/>
+        <box size="0.012700 0.025400 0.101600"/>
       </geometry>
       <material name="yellow"/>
     </visual>
     <collision>
-      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
+      <origin xyz="0.000000 0.000000 -0.025400" rpy="0 0 0"/>
       <geometry>
-        <box size="0.012700 0.025400 0.114300"/>
+        <box size="0.012700 0.025400 0.101600"/>
       </geometry>
     </collision>
   </link>
@@ -163,6 +187,10 @@
     <child link="rod1_man2"/>
   </joint>
   <link name="rod2">
+    <inertial>
+      <mass value="1"/>
+      <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1"/>
+    </inertial>
     <visual>
       <origin xyz="-0.381000 0.000000 0.000000" rpy="1.570796 0 0"/>
       <geometry>
@@ -178,17 +206,21 @@
     <limit effort="100" velocity="100"/>
   </joint>
   <link name="rod2_man0">
+    <inertial>
+      <mass value="1"/>
+      <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1"/>
+    </inertial>
     <visual>
-      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
+      <origin xyz="0.000000 0.000000 -0.025400" rpy="0 0 0"/>
       <geometry>
-        <box size="0.012700 0.025400 0.114300"/>
+        <box size="0.012700 0.025400 0.101600"/>
       </geometry>
       <material name="yellow"/>
     </visual>
     <collision>
-      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
+      <origin xyz="0.000000 0.000000 -0.025400" rpy="0 0 0"/>
       <geometry>
-        <box size="0.012700 0.025400 0.114300"/>
+        <box size="0.012700 0.025400 0.101600"/>
       </geometry>
     </collision>
   </link>
@@ -200,17 +232,21 @@
     <limit effort="100" velocity="100"/>
   </joint>
   <link name="rod2_man1">
+    <inertial>
+      <mass value="1"/>
+      <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1"/>
+    </inertial>
     <visual>
-      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
+      <origin xyz="0.000000 0.000000 -0.025400" rpy="0 0 0"/>
       <geometry>
-        <box size="0.012700 0.025400 0.114300"/>
+        <box size="0.012700 0.025400 0.101600"/>
       </geometry>
       <material name="yellow"/>
     </visual>
     <collision>
-      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
+      <origin xyz="0.000000 0.000000 -0.025400" rpy="0 0 0"/>
       <geometry>
-        <box size="0.012700 0.025400 0.114300"/>
+        <box size="0.012700 0.025400 0.101600"/>
       </geometry>
     </collision>
   </link>
@@ -220,6 +256,10 @@
     <child link="rod2_man1"/>
   </joint>
   <link name="rod3">
+    <inertial>
+      <mass value="1"/>
+      <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1"/>
+    </inertial>
     <visual>
       <origin xyz="-0.228600 0.000000 0.000000" rpy="1.570796 0 0"/>
       <geometry>
@@ -235,17 +275,21 @@
     <limit effort="100" velocity="100"/>
   </joint>
   <link name="rod3_man0">
+    <inertial>
+      <mass value="1"/>
+      <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1"/>
+    </inertial>
     <visual>
-      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
+      <origin xyz="0.000000 0.000000 -0.025400" rpy="0 0 0"/>
       <geometry>
-        <box size="0.012700 0.025400 0.114300"/>
+        <box size="0.012700 0.025400 0.101600"/>
       </geometry>
       <material name="black"/>
     </visual>
     <collision>
-      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
+      <origin xyz="0.000000 0.000000 -0.025400" rpy="0 0 0"/>
       <geometry>
-        <box size="0.012700 0.025400 0.114300"/>
+        <box size="0.012700 0.025400 0.101600"/>
       </geometry>
     </collision>
   </link>
@@ -257,17 +301,21 @@
     <limit effort="100" velocity="100"/>
   </joint>
   <link name="rod3_man1">
+    <inertial>
+      <mass value="1"/>
+      <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1"/>
+    </inertial>
     <visual>
-      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
+      <origin xyz="0.000000 0.000000 -0.025400" rpy="0 0 0"/>
       <geometry>
-        <box size="0.012700 0.025400 0.114300"/>
+        <box size="0.012700 0.025400 0.101600"/>
       </geometry>
       <material name="black"/>
     </visual>
     <collision>
-      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
+      <origin xyz="0.000000 0.000000 -0.025400" rpy="0 0 0"/>
       <geometry>
-        <box size="0.012700 0.025400 0.114300"/>
+        <box size="0.012700 0.025400 0.101600"/>
       </geometry>
     </collision>
   </link>
@@ -277,17 +325,21 @@
     <child link="rod3_man1"/>
   </joint>
   <link name="rod3_man2">
+    <inertial>
+      <mass value="1"/>
+      <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1"/>
+    </inertial>
     <visual>
-      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
+      <origin xyz="0.000000 0.000000 -0.025400" rpy="0 0 0"/>
       <geometry>
-        <box size="0.012700 0.025400 0.114300"/>
+        <box size="0.012700 0.025400 0.101600"/>
       </geometry>
       <material name="black"/>
     </visual>
     <collision>
-      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
+      <origin xyz="0.000000 0.000000 -0.025400" rpy="0 0 0"/>
       <geometry>
-        <box size="0.012700 0.025400 0.114300"/>
+        <box size="0.012700 0.025400 0.101600"/>
       </geometry>
     </collision>
   </link>
@@ -297,6 +349,10 @@
     <child link="rod3_man2"/>
   </joint>
   <link name="rod4">
+    <inertial>
+      <mass value="1"/>
+      <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1"/>
+    </inertial>
     <visual>
       <origin xyz="-0.076200 0.000000 0.000000" rpy="1.570796 0 0"/>
       <geometry>
@@ -312,17 +368,21 @@
     <limit effort="100" velocity="100"/>
   </joint>
   <link name="rod4_man0">
+    <inertial>
+      <mass value="1"/>
+      <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1"/>
+    </inertial>
     <visual>
-      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
+      <origin xyz="0.000000 0.000000 -0.025400" rpy="0 0 0"/>
       <geometry>
-        <box size="0.012700 0.025400 0.114300"/>
+        <box size="0.012700 0.025400 0.101600"/>
       </geometry>
       <material name="yellow"/>
     </visual>
     <collision>
-      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
+      <origin xyz="0.000000 0.000000 -0.025400" rpy="0 0 0"/>
       <geometry>
-        <box size="0.012700 0.025400 0.114300"/>
+        <box size="0.012700 0.025400 0.101600"/>
       </geometry>
     </collision>
   </link>
@@ -334,17 +394,21 @@
     <limit effort="100" velocity="100"/>
   </joint>
   <link name="rod4_man1">
+    <inertial>
+      <mass value="1"/>
+      <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1"/>
+    </inertial>
     <visual>
-      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
+      <origin xyz="0.000000 0.000000 -0.025400" rpy="0 0 0"/>
       <geometry>
-        <box size="0.012700 0.025400 0.114300"/>
+        <box size="0.012700 0.025400 0.101600"/>
       </geometry>
       <material name="yellow"/>
     </visual>
     <collision>
-      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
+      <origin xyz="0.000000 0.000000 -0.025400" rpy="0 0 0"/>
       <geometry>
-        <box size="0.012700 0.025400 0.114300"/>
+        <box size="0.012700 0.025400 0.101600"/>
       </geometry>
     </collision>
   </link>
@@ -354,17 +418,21 @@
     <child link="rod4_man1"/>
   </joint>
   <link name="rod4_man2">
+    <inertial>
+      <mass value="1"/>
+      <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1"/>
+    </inertial>
     <visual>
-      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
+      <origin xyz="0.000000 0.000000 -0.025400" rpy="0 0 0"/>
       <geometry>
-        <box size="0.012700 0.025400 0.114300"/>
+        <box size="0.012700 0.025400 0.101600"/>
       </geometry>
       <material name="yellow"/>
     </visual>
     <collision>
-      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
+      <origin xyz="0.000000 0.000000 -0.025400" rpy="0 0 0"/>
       <geometry>
-        <box size="0.012700 0.025400 0.114300"/>
+        <box size="0.012700 0.025400 0.101600"/>
       </geometry>
     </collision>
   </link>
@@ -374,17 +442,21 @@
     <child link="rod4_man2"/>
   </joint>
   <link name="rod4_man3">
+    <inertial>
+      <mass value="1"/>
+      <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1"/>
+    </inertial>
     <visual>
-      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
+      <origin xyz="0.000000 0.000000 -0.025400" rpy="0 0 0"/>
       <geometry>
-        <box size="0.012700 0.025400 0.114300"/>
+        <box size="0.012700 0.025400 0.101600"/>
       </geometry>
       <material name="yellow"/>
     </visual>
     <collision>
-      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
+      <origin xyz="0.000000 0.000000 -0.025400" rpy="0 0 0"/>
       <geometry>
-        <box size="0.012700 0.025400 0.114300"/>
+        <box size="0.012700 0.025400 0.101600"/>
       </geometry>
     </collision>
   </link>
@@ -394,17 +466,21 @@
     <child link="rod4_man3"/>
   </joint>
   <link name="rod4_man4">
+    <inertial>
+      <mass value="1"/>
+      <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1"/>
+    </inertial>
     <visual>
-      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
+      <origin xyz="0.000000 0.000000 -0.025400" rpy="0 0 0"/>
       <geometry>
-        <box size="0.012700 0.025400 0.114300"/>
+        <box size="0.012700 0.025400 0.101600"/>
       </geometry>
       <material name="yellow"/>
     </visual>
     <collision>
-      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
+      <origin xyz="0.000000 0.000000 -0.025400" rpy="0 0 0"/>
       <geometry>
-        <box size="0.012700 0.025400 0.114300"/>
+        <box size="0.012700 0.025400 0.101600"/>
       </geometry>
     </collision>
   </link>
@@ -414,6 +490,10 @@
     <child link="rod4_man4"/>
   </joint>
   <link name="rod5">
+    <inertial>
+      <mass value="1"/>
+      <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1"/>
+    </inertial>
     <visual>
       <origin xyz="0.076200 0.000000 0.000000" rpy="1.570796 0 0"/>
       <geometry>
@@ -429,17 +509,21 @@
     <limit effort="100" velocity="100"/>
   </joint>
   <link name="rod5_man0">
+    <inertial>
+      <mass value="1"/>
+      <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1"/>
+    </inertial>
     <visual>
-      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
+      <origin xyz="0.000000 0.000000 -0.025400" rpy="0 0 0"/>
       <geometry>
-        <box size="0.012700 0.025400 0.114300"/>
+        <box size="0.012700 0.025400 0.101600"/>
       </geometry>
       <material name="black"/>
     </visual>
     <collision>
-      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
+      <origin xyz="0.000000 0.000000 -0.025400" rpy="0 0 0"/>
       <geometry>
-        <box size="0.012700 0.025400 0.114300"/>
+        <box size="0.012700 0.025400 0.101600"/>
       </geometry>
     </collision>
   </link>
@@ -451,17 +535,21 @@
     <limit effort="100" velocity="100"/>
   </joint>
   <link name="rod5_man1">
+    <inertial>
+      <mass value="1"/>
+      <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1"/>
+    </inertial>
     <visual>
-      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
+      <origin xyz="0.000000 0.000000 -0.025400" rpy="0 0 0"/>
       <geometry>
-        <box size="0.012700 0.025400 0.114300"/>
+        <box size="0.012700 0.025400 0.101600"/>
       </geometry>
       <material name="black"/>
     </visual>
     <collision>
-      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
+      <origin xyz="0.000000 0.000000 -0.025400" rpy="0 0 0"/>
       <geometry>
-        <box size="0.012700 0.025400 0.114300"/>
+        <box size="0.012700 0.025400 0.101600"/>
       </geometry>
     </collision>
   </link>
@@ -471,17 +559,21 @@
     <child link="rod5_man1"/>
   </joint>
   <link name="rod5_man2">
+    <inertial>
+      <mass value="1"/>
+      <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1"/>
+    </inertial>
     <visual>
-      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
+      <origin xyz="0.000000 0.000000 -0.025400" rpy="0 0 0"/>
       <geometry>
-        <box size="0.012700 0.025400 0.114300"/>
+        <box size="0.012700 0.025400 0.101600"/>
       </geometry>
       <material name="black"/>
     </visual>
     <collision>
-      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
+      <origin xyz="0.000000 0.000000 -0.025400" rpy="0 0 0"/>
       <geometry>
-        <box size="0.012700 0.025400 0.114300"/>
+        <box size="0.012700 0.025400 0.101600"/>
       </geometry>
     </collision>
   </link>
@@ -491,17 +583,21 @@
     <child link="rod5_man2"/>
   </joint>
   <link name="rod5_man3">
+    <inertial>
+      <mass value="1"/>
+      <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1"/>
+    </inertial>
     <visual>
-      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
+      <origin xyz="0.000000 0.000000 -0.025400" rpy="0 0 0"/>
       <geometry>
-        <box size="0.012700 0.025400 0.114300"/>
+        <box size="0.012700 0.025400 0.101600"/>
       </geometry>
       <material name="black"/>
     </visual>
     <collision>
-      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
+      <origin xyz="0.000000 0.000000 -0.025400" rpy="0 0 0"/>
       <geometry>
-        <box size="0.012700 0.025400 0.114300"/>
+        <box size="0.012700 0.025400 0.101600"/>
       </geometry>
     </collision>
   </link>
@@ -511,17 +607,21 @@
     <child link="rod5_man3"/>
   </joint>
   <link name="rod5_man4">
+    <inertial>
+      <mass value="1"/>
+      <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1"/>
+    </inertial>
     <visual>
-      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
+      <origin xyz="0.000000 0.000000 -0.025400" rpy="0 0 0"/>
       <geometry>
-        <box size="0.012700 0.025400 0.114300"/>
+        <box size="0.012700 0.025400 0.101600"/>
       </geometry>
       <material name="black"/>
     </visual>
     <collision>
-      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
+      <origin xyz="0.000000 0.000000 -0.025400" rpy="0 0 0"/>
       <geometry>
-        <box size="0.012700 0.025400 0.114300"/>
+        <box size="0.012700 0.025400 0.101600"/>
       </geometry>
     </collision>
   </link>
@@ -531,6 +631,10 @@
     <child link="rod5_man4"/>
   </joint>
   <link name="rod6">
+    <inertial>
+      <mass value="1"/>
+      <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1"/>
+    </inertial>
     <visual>
       <origin xyz="0.228600 0.000000 0.000000" rpy="1.570796 0 0"/>
       <geometry>
@@ -546,17 +650,21 @@
     <limit effort="100" velocity="100"/>
   </joint>
   <link name="rod6_man0">
+    <inertial>
+      <mass value="1"/>
+      <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1"/>
+    </inertial>
     <visual>
-      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
+      <origin xyz="0.000000 0.000000 -0.025400" rpy="0 0 0"/>
       <geometry>
-        <box size="0.012700 0.025400 0.114300"/>
+        <box size="0.012700 0.025400 0.101600"/>
       </geometry>
       <material name="yellow"/>
     </visual>
     <collision>
-      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
+      <origin xyz="0.000000 0.000000 -0.025400" rpy="0 0 0"/>
       <geometry>
-        <box size="0.012700 0.025400 0.114300"/>
+        <box size="0.012700 0.025400 0.101600"/>
       </geometry>
     </collision>
   </link>
@@ -568,17 +676,21 @@
     <limit effort="100" velocity="100"/>
   </joint>
   <link name="rod6_man1">
+    <inertial>
+      <mass value="1"/>
+      <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1"/>
+    </inertial>
     <visual>
-      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
+      <origin xyz="0.000000 0.000000 -0.025400" rpy="0 0 0"/>
       <geometry>
-        <box size="0.012700 0.025400 0.114300"/>
+        <box size="0.012700 0.025400 0.101600"/>
       </geometry>
       <material name="yellow"/>
     </visual>
     <collision>
-      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
+      <origin xyz="0.000000 0.000000 -0.025400" rpy="0 0 0"/>
       <geometry>
-        <box size="0.012700 0.025400 0.114300"/>
+        <box size="0.012700 0.025400 0.101600"/>
       </geometry>
     </collision>
   </link>
@@ -588,17 +700,21 @@
     <child link="rod6_man1"/>
   </joint>
   <link name="rod6_man2">
+    <inertial>
+      <mass value="1"/>
+      <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1"/>
+    </inertial>
     <visual>
-      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
+      <origin xyz="0.000000 0.000000 -0.025400" rpy="0 0 0"/>
       <geometry>
-        <box size="0.012700 0.025400 0.114300"/>
+        <box size="0.012700 0.025400 0.101600"/>
       </geometry>
       <material name="yellow"/>
     </visual>
     <collision>
-      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
+      <origin xyz="0.000000 0.000000 -0.025400" rpy="0 0 0"/>
       <geometry>
-        <box size="0.012700 0.025400 0.114300"/>
+        <box size="0.012700 0.025400 0.101600"/>
       </geometry>
     </collision>
   </link>
@@ -608,6 +724,10 @@
     <child link="rod6_man2"/>
   </joint>
   <link name="rod7">
+    <inertial>
+      <mass value="1"/>
+      <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1"/>
+    </inertial>
     <visual>
       <origin xyz="0.381000 0.000000 0.000000" rpy="1.570796 0 0"/>
       <geometry>
@@ -623,17 +743,21 @@
     <limit effort="100" velocity="100"/>
   </joint>
   <link name="rod7_man0">
+    <inertial>
+      <mass value="1"/>
+      <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1"/>
+    </inertial>
     <visual>
-      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
+      <origin xyz="0.000000 0.000000 -0.025400" rpy="0 0 0"/>
       <geometry>
-        <box size="0.012700 0.025400 0.114300"/>
+        <box size="0.012700 0.025400 0.101600"/>
       </geometry>
       <material name="black"/>
     </visual>
     <collision>
-      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
+      <origin xyz="0.000000 0.000000 -0.025400" rpy="0 0 0"/>
       <geometry>
-        <box size="0.012700 0.025400 0.114300"/>
+        <box size="0.012700 0.025400 0.101600"/>
       </geometry>
     </collision>
   </link>
@@ -645,17 +769,21 @@
     <limit effort="100" velocity="100"/>
   </joint>
   <link name="rod7_man1">
+    <inertial>
+      <mass value="1"/>
+      <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1"/>
+    </inertial>
     <visual>
-      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
+      <origin xyz="0.000000 0.000000 -0.025400" rpy="0 0 0"/>
       <geometry>
-        <box size="0.012700 0.025400 0.114300"/>
+        <box size="0.012700 0.025400 0.101600"/>
       </geometry>
       <material name="black"/>
     </visual>
     <collision>
-      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
+      <origin xyz="0.000000 0.000000 -0.025400" rpy="0 0 0"/>
       <geometry>
-        <box size="0.012700 0.025400 0.114300"/>
+        <box size="0.012700 0.025400 0.101600"/>
       </geometry>
     </collision>
   </link>
@@ -665,6 +793,10 @@
     <child link="rod7_man1"/>
   </joint>
   <link name="rod8">
+    <inertial>
+      <mass value="1"/>
+      <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1"/>
+    </inertial>
     <visual>
       <origin xyz="0.533400 0.000000 0.000000" rpy="1.570796 0 0"/>
       <geometry>
@@ -680,17 +812,21 @@
     <limit effort="100" velocity="100"/>
   </joint>
   <link name="rod8_man0">
+    <inertial>
+      <mass value="1"/>
+      <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1"/>
+    </inertial>
     <visual>
-      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
+      <origin xyz="0.000000 0.000000 -0.025400" rpy="0 0 0"/>
       <geometry>
-        <box size="0.012700 0.025400 0.114300"/>
+        <box size="0.012700 0.025400 0.101600"/>
       </geometry>
       <material name="black"/>
     </visual>
     <collision>
-      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
+      <origin xyz="0.000000 0.000000 -0.025400" rpy="0 0 0"/>
       <geometry>
-        <box size="0.012700 0.025400 0.114300"/>
+        <box size="0.012700 0.025400 0.101600"/>
       </geometry>
     </collision>
   </link>
@@ -702,17 +838,21 @@
     <limit effort="100" velocity="100"/>
   </joint>
   <link name="rod8_man1">
+    <inertial>
+      <mass value="1"/>
+      <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1"/>
+    </inertial>
     <visual>
-      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
+      <origin xyz="0.000000 0.000000 -0.025400" rpy="0 0 0"/>
       <geometry>
-        <box size="0.012700 0.025400 0.114300"/>
+        <box size="0.012700 0.025400 0.101600"/>
       </geometry>
       <material name="black"/>
     </visual>
     <collision>
-      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
+      <origin xyz="0.000000 0.000000 -0.025400" rpy="0 0 0"/>
       <geometry>
-        <box size="0.012700 0.025400 0.114300"/>
+        <box size="0.012700 0.025400 0.101600"/>
       </geometry>
     </collision>
   </link>
@@ -722,17 +862,21 @@
     <child link="rod8_man1"/>
   </joint>
   <link name="rod8_man2">
+    <inertial>
+      <mass value="1"/>
+      <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1"/>
+    </inertial>
     <visual>
-      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
+      <origin xyz="0.000000 0.000000 -0.025400" rpy="0 0 0"/>
       <geometry>
-        <box size="0.012700 0.025400 0.114300"/>
+        <box size="0.012700 0.025400 0.101600"/>
       </geometry>
       <material name="black"/>
     </visual>
     <collision>
-      <origin xyz="0.000000 0.000000 -0.012700" rpy="0 0 0"/>
+      <origin xyz="0.000000 0.000000 -0.025400" rpy="0 0 0"/>
       <geometry>
-        <box size="0.012700 0.025400 0.114300"/>
+        <box size="0.012700 0.025400 0.101600"/>
       </geometry>
     </collision>
   </link>
