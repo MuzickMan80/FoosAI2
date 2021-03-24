@@ -78,12 +78,12 @@ def fixedJoint(name, parent, child, x=0, y=0, z=0, rpy='0 0 0'):
     ctag('child', {'link': child})
     etag('joint')
 
-def prismaticJoint(name, parent, child):
+def prismaticJoint(name, parent, child, limit):
     stag('joint', {'name': name, 'type': 'prismatic'})
     ctag('axis', {'xyz': '0 1 0'})
     ctag('parent', {'link': parent})
     ctag('child', {'link': child})
-    ctag('limit', {'effort': 100, 'velocity': 100})
+    ctag('limit', {'effort': 100, 'velocity': 100, 'lower': -limit, 'upper': limit})
     etag('joint')
 
 def continuousJoint(name, parent, child, x=0, y=0, z=0, rpy='0 0 0'):
@@ -131,12 +131,18 @@ def man(rodIndex, manIndex, color, xOffset, yOffset):
     else:
         fixedJoint(f'rod{rodIndex}_man{manIndex}_joint', f'rod{rodIndex}_man0', f'rod{rodIndex}_man{manIndex}', 0, yOffset)
 
+def tran_limit(numMen, manDistance):
+    tableDepth = 27 * metersPerInch
+    manWidth = 1 * metersPerInch
+    menWidth = (numMen - 1) * manDistance + manWidth
+    return (tableDepth - menWidth) / 2
+
 def rod(index, color, xOffset, manCount, manDistance):
     stag('link', {'name': f'rod{index}'})
     inertial()
     visualCylinder('silver', xOffset, 0, 0, rodDiameter, rodLength, f'{math.pi/2:f} 0 0')
     etag('link')
-    prismaticJoint(f'rod{index}_joint', 'table', f'rod{index}')
+    prismaticJoint(f'rod{index}_joint', 'table', f'rod{index}', tran_limit(manCount, manDistance))
     yOffset = -manDistance * (manCount-1) / 2
     man(index, 0, color, xOffset, yOffset)
     for manIndex in range(1, manCount):
@@ -158,6 +164,7 @@ goalieDistance =   8.125*metersPerInch
 twomanDistance =   9.500*metersPerInch
 fivebarDistance =  4.750*metersPerInch
 threemanDistance = 7.250*metersPerInch
+
 rod(1, 'yellow', rodDistance * -3.5, 3, goalieDistance)
 rod(2, 'yellow', rodDistance * -2.5, 2, twomanDistance)
 rod(3, 'black',  rodDistance * -1.5, 3, threemanDistance)

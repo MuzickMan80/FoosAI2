@@ -110,7 +110,7 @@
     <axis xyz="0 1 0"/>
     <parent link="table"/>
     <child link="rod1"/>
-    <limit effort="100" velocity="100"/>
+    <limit effort="100" velocity="100" lower="-0.12382499999999999" upper="0.12382499999999999"/>
   </joint>
   <link name="rod1_man0">
     <inertial>
@@ -203,7 +203,7 @@
     <axis xyz="0 1 0"/>
     <parent link="table"/>
     <child link="rod2"/>
-    <limit effort="100" velocity="100"/>
+    <limit effort="100" velocity="100" lower="-0.20955" upper="0.20955"/>
   </joint>
   <link name="rod2_man0">
     <inertial>
@@ -272,7 +272,7 @@
     <axis xyz="0 1 0"/>
     <parent link="table"/>
     <child link="rod3"/>
-    <limit effort="100" velocity="100"/>
+    <limit effort="100" velocity="100" lower="-0.14605" upper="0.14605"/>
   </joint>
   <link name="rod3_man0">
     <inertial>
@@ -365,7 +365,7 @@
     <axis xyz="0 1 0"/>
     <parent link="table"/>
     <child link="rod4"/>
-    <limit effort="100" velocity="100"/>
+    <limit effort="100" velocity="100" lower="-0.08889999999999998" upper="0.08889999999999998"/>
   </joint>
   <link name="rod4_man0">
     <inertial>
@@ -506,7 +506,7 @@
     <axis xyz="0 1 0"/>
     <parent link="table"/>
     <child link="rod5"/>
-    <limit effort="100" velocity="100"/>
+    <limit effort="100" velocity="100" lower="-0.08889999999999998" upper="0.08889999999999998"/>
   </joint>
   <link name="rod5_man0">
     <inertial>
@@ -647,7 +647,7 @@
     <axis xyz="0 1 0"/>
     <parent link="table"/>
     <child link="rod6"/>
-    <limit effort="100" velocity="100"/>
+    <limit effort="100" velocity="100" lower="-0.14605" upper="0.14605"/>
   </joint>
   <link name="rod6_man0">
     <inertial>
@@ -740,7 +740,7 @@
     <axis xyz="0 1 0"/>
     <parent link="table"/>
     <child link="rod7"/>
-    <limit effort="100" velocity="100"/>
+    <limit effort="100" velocity="100" lower="-0.20955" upper="0.20955"/>
   </joint>
   <link name="rod7_man0">
     <inertial>
@@ -809,7 +809,7 @@
     <axis xyz="0 1 0"/>
     <parent link="table"/>
     <child link="rod8"/>
-    <limit effort="100" velocity="100"/>
+    <limit effort="100" velocity="100" lower="-0.12382499999999999" upper="0.12382499999999999"/>
   </joint>
   <link name="rod8_man0">
     <inertial>
