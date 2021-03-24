@@ -145,7 +145,7 @@ def rod(index, color, xOffset, manCount, manDistance):
 import sys
 
 orig_stdout = sys.stdout
-f = open('FoosballTable2.urdf', 'w')
+f = open('FoosballTable.urdf', 'w')
 sys.stdout = f
 
 stag('robot', {'name': 'foosball_table'})
@@ -166,7 +166,6 @@ rod(5, 'black',  rodDistance *  0.5, 5, fivebarDistance)
 rod(6, 'yellow', rodDistance *  1.5, 3, threemanDistance)
 rod(7, 'black',  rodDistance *  2.5, 2, twomanDistance)
 rod(8, 'black',  rodDistance *  3.5, 3, goalieDistance)
-#floor()
 etag('robot')
 
 sys.stdout = orig_stdout
