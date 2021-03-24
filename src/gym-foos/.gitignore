@@ -1,1 +1,6 @@
 /archive
+*.zip
+*.log
+*.npz
+events.*
+monitor.csv
