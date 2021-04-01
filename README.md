@@ -1,8 +1,8 @@
 # About
 This repo consists of several (probably seperable) parts:
 
-1. A Foosball OpenAI style gym for training agents
-2. A few sample scripts for training agents using stable-baselines3
+1. gym - A Foosball OpenAI style gym for training agents
+2. train - A few sample scripts for training agents using stable-baselines3
 3. A custom motion controller for a real foosball table
 4. 3D models and a BOM for automating a tornado foosball table
 5. Scripts for using Raspberry Pi to capture the ball position (and eventually run the agent)
