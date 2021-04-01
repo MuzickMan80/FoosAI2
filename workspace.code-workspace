@@ -1,7 +1,7 @@
 {
 	"folders": [
 		{
-			"path": "src/foos/motion/firmware",
+			"path": "motion",
 			"name": "controller"
 		},
 		{

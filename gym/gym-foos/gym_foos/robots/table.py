@@ -8,7 +8,7 @@ import os
 class Table:
     def __init__(self, client):
         self.client = client
-        f_name = os.path.join(os.path.dirname(__file__),'../assets/FoosballTable2.urdf')
+        f_name = os.path.join(os.path.dirname(__file__),'../assets/FoosballTable.urdf')
         self.table = p.loadURDF(fileName=f_name,
                                 basePosition=[0, 0, 0.1],
                                 physicsClientId=client,
@@ -58,20 +58,20 @@ class Table:
 
     def apply_rod_action(self,rod,tran,rot):
         p.setJointMotorControl2(self.table, self.tran_joints[rod],
-                            p.POSITION_CONTROL,
-                            targetPosition=self.tran_limits[rod]*tran,
-                            maxVelocity=0.5,
+                            p.VELOCITY_CONTROL,
+                            targetVelocity=tran,
+                            force=5,
                             physicsClientId=self.client)
         p.setJointMotorControl2(self.table, self.rot_joints[rod],
-                            p.POSITION_CONTROL,
-                            targetPosition=3.14*rot,
-                            maxVelocity=5,
+                            p.VELOCITY_CONTROL,
+                            targetVelocity=5*rot,
+                            force=5,
                             physicsClientId=self.client)
 
     def get_rod_observation(self,rod):
         tran_obs = p.getJointState(self.table, self.tran_joints[rod], physicsClientId=self.client)
         rot_obs = p.getJointState(self.table, self.rot_joints[rod], physicsClientId=self.client)        
-        return (tran_obs[0], tran_obs[1]/0.5, rot_obs[0], rot_obs[1]/5)
+        return (tran_obs[0], tran_obs[1], rot_obs[0], rot_obs[1]/5)
 
     def get_rod_observations(self, player):
         rods=self.rods[player-1]
