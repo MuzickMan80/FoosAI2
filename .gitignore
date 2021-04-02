@@ -6,3 +6,4 @@
 *.pyc
 foos_env
 rl-baselines3-zoo
+*.egg-info
