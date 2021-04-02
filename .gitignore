@@ -7,3 +7,4 @@
 foos_env
 rl-baselines3-zoo
 *.egg-info
+__pycache__
