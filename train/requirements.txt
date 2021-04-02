@@ -1,0 +1,8 @@
+stable-baselines3[extra]>=1.0
+pybullet
+scikit-optimize
+optuna
+pytablewriter
+seaborn
+pyyaml>=5.1
+sb3-contrib>=1.0

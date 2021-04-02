@@ -9,5 +9,7 @@
 4. Install training dependencies
     * git clone --recursive https://github.com/DLR-RM/rl-baselines3-zoo
     * uncomment gSDE lines in rl-baselines3-zoo/utils/hyperparams_opt.py
+    * pip install -r rl-baselines3-zoo/requirements.txt
 5. Tune the hyperparameters for training
+    * 
 6. Train and enjoy
