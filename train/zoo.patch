@@ -1,16 +1,3 @@
-diff --git a/requirements.txt b/requirements.txt
-index 5f21bab..b81cab1 100644
---- a/requirements.txt
-+++ b/requirements.txt
-@@ -1,7 +1,6 @@
--stable-baselines3[extra,tests,docs]>=1.0
-+stable-baselines3[extra]>=1.0
- box2d-py==2.3.8
- pybullet
--gym-minigrid
- scikit-optimize
- optuna
- pytablewriter
 diff --git a/utils/hyperparams_opt.py b/utils/hyperparams_opt.py
 index bfcec6b..7479f0f 100644
 --- a/utils/hyperparams_opt.py
@@ -39,3 +26,17 @@ index bfcec6b..7479f0f 100644
              net_arch=net_arch,
              activation_fn=activation_fn,
              ortho_init=ortho_init,
+diff --git a/utils/import_envs.py b/utils/import_envs.py
+index faf26f8..1d9dc6b 100644
+--- a/utils/import_envs.py
++++ b/utils/import_envs.py
+@@ -27,3 +27,8 @@ try:
+     import gym_donkeycar  # pytype: disable=import-error
+ except ImportError:
+     gym_donkeycar = None
++
++try:
++    import gym_foos
++except ImportError:
++    gym_foos = None
+\ No newline at end of file
