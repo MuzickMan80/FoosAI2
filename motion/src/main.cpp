@@ -1,57 +1,24 @@
-/**
- * Author Teemu Mäntykallio
- *
- * Plot TMC2130 or TMC2660 motor load using the stallGuard value.
- * You can finetune the reading by changing the STALL_VALUE.
- * This will let you control at which load the value will read 0
- * and the stall flag will be triggered. This will also set pin DIAG1 high.
- * A higher STALL_VALUE will make the reading less sensitive and
- * a lower STALL_VALUE will make it more sensitive.
- *
- * You can control the rotation speed with
- * 0 Stop
- * 1 Resume
- * + Speed up
- * - Slow down
- */
+
 #include <Arduino.h>
 #include <HardwareTimer.h>
 #include <TMCStepper.h>
 
-#define MAX_SPEED      2000 // In timer value
-#define MIN_SPEED        10
+#include <board.h>
+#include <ports.h>
+#include <stepper.h>
 
-#define STALL_VALUE      15 // [-64..63]
+RodController rod0 = RodController(0);
+RodController rod1 = RodController(1);
 
-#define EN_PIN           PB14 // Enable
-#define DIR_PIN          PB12 // Direction
-#define STEP_PIN         PB13 // Step
-#define SW_RX            PB15 // TMC2208/TMC2224 SoftwareSerial receive pin
-#define SW_TX            PB15 // TMC2208/TMC2224 SoftwareSerial transmit pin
-#define DRIVER_ADDRESS 0b00 // TMC2209 Driver address according to MS1 and MS2
-#define LED1              PA8 // port with an attached LED
-#define LED2              PC9 // port with an attached LED
-
-#define R_SENSE 0.11f // Match to your driver
-                      // SilentStepStick series use 0.11
-                      // UltiMachine Einsy and Archim2 boards use 0.2
-                      // Panucatt BSD2660 uses 0.1
-                      // Watterott TMC5160 uses 0.075
 
 // Select your stepper driver type
 TMC2209Stepper driver(SW_RX, SW_TX, R_SENSE, DRIVER_ADDRESS);
-
-// Using direct register manipulation can reach faster stepping times
-#define STEP_PORT     PORTB // Match with STEP_PIN
-#define STEP_BIT_POS     13 // Match with STEP_PIN
 
 HardwareTimer timer(1);
 
 #define MICROSTEPS 4
 uint32 speedRpm_ = 10;
 bool running = false;
-
-USBSerial SerialUSB;
 
 void rampUp(uint32_t speed);
 
@@ -60,30 +27,7 @@ void timerExpire() {
 }
 
 void setup() {
-  afio_cfg_debug_ports(AFIO_DEBUG_SW_ONLY);
-
-  #define USB_CONNECT_PIN                   PC13
-  pinMode(USB_CONNECT_PIN, OUTPUT);
-  digitalWrite(USB_CONNECT_PIN, true);  // USB clear connection
-  delay(1000);                          // Give OS time to notice
-  digitalWrite(USB_CONNECT_PIN, false);
-
-  SerialUSB.begin(115200);
-  uint32_t serial_connect_timeout = millis() + 1000UL;
-  while (!SerialUSB && millis()<serial_connect_timeout) { /*nada*/ }
-  SerialUSB.println("\nStart...");
-
-  pinMode(LED1, OUTPUT);
-  pinMode(LED2, OUTPUT);
-
-  for (int i = 0; i < 1; ++i) {
-    digitalWrite(LED1, HIGH);
-    digitalWrite(LED2, HIGH);
-    delay(500);
-    digitalWrite(LED1, LOW);
-    digitalWrite(LED2, LOW);
-    delay(500);
-  }
+  init_board();
 
   pinMode(EN_PIN, OUTPUT);
   pinMode(STEP_PIN, OUTPUT);
@@ -103,8 +47,6 @@ void setup() {
   //timer.setOverflow(256);
   timer.pause();
   timer.attachInterrupt(0, timerExpire);
-
-  //rampUp(100);
 }
 
 uint32_t speedToStepPeriod(uint32_t speedRpm) {
