@@ -3,29 +3,26 @@ from gym import error, spaces, utils
 from gym.utils import seeding
 import numpy as np
 import pybullet as p
-from  gym_foos.robots.table import Table
+from gym_foos.robots.table import Table
+from gym_foos.opponents.constant_spin import DefaultOpponent
 import matplotlib.pyplot as plt
-
-class DefaultOpponent():
-  def predict(self, observations):
-    return ([[0,-1],[0,-1],[0,-1],[0,-1]], None)
 
 class FoosEnv(gym.Env):
   metadata = {'render.modes': ['human']}
 
-  def __init__(self, opponent=DefaultOpponent(), goal_reward=100, loss_reward=-100,pass_reward=1,fwd_pass_reward=10):
+  def __init__(self, opponent=DefaultOpponent(), goal_reward=1, loss_reward=-1,pass_reward=.01,fwd_pass_reward=.1):
     # Action space is the target rotation and translation 
     # position of each rod controlled by the player
     self.action_space = gym.spaces.box.Box(
-      low=np.array([-1,-1,-1,-1,-1,-1,-1,-1]),
-      high=np.array([1,1,1,1,1,1,1,1])
+      low=np.array([-1,-1,-1,-1,-1,-1,-1,-1], dtype=np.float32),
+      high=np.array([1,1,1,1,1,1,1,1], dtype=np.float32)
     )
 
     # Observation space is the x,y location of the ball
     # and x,y velocity of the ball
     self.observation_space = gym.spaces.box.Box(
-      low=np.array([-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1]),
-      high=np.array([1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1])
+      low=np.array([-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1], dtype=np.float32),
+      high=np.array([1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1], dtype=np.float32),
     )
 
     self.opponent = opponent
@@ -38,7 +35,6 @@ class FoosEnv(gym.Env):
     self.np_random, _ = gym.utils.seeding.np_random()
 
     self.client = p.connect(p.DIRECT)
-    p.setTimeStep(1/30, self.client)
     self.reset()
 
   def step(self, action):
@@ -49,23 +45,24 @@ class FoosEnv(gym.Env):
     opponent_action, _states = self.opponent.predict(opponent_ob)
     self.table.apply_action(player=2,action=opponent_action)
 
-    p.stepSimulation()
+    p.stepSimulation(physicsClientId=self.client)
 
     ball_ob = self.table.get_observation(player=1)
     ob = np.array(ball_ob, dtype=np.float32)
-
     goal,loss,lateral_pass,forward_pass = self.table.get_rewards()
     reward = goal*self.goal_reward + loss*self.loss_reward + lateral_pass*self.pass_reward + forward_pass*self.fwd_pass_reward
 
     self.step_count = self.step_count+1
-    if self.step_count >= 2000 or goal or loss:
+    print(self.step_count)
+    if self.step_count >= 500 or goal or loss:
       self.done = True
     
     return ob, reward, self.done, dict()
 
   def reset(self):
-    p.resetSimulation(self.client)
-    p.setGravity(0,0,-10)
+    p.resetSimulation(physicsClientId=self.client)
+    p.setTimeStep(1/30, physicsClientId=self.client)
+    p.setGravity(0,0,-10, physicsClientId=self.client)
     self.table = Table(self.client)
     self.done = False
     self.step_count = 0
@@ -87,11 +84,11 @@ class FoosEnv(gym.Env):
       yaw=0, pitch=-90, roll=0, upAxisIndex=2, distance=1, 
       cameraTargetPosition=tableStartPos)
 
-    frame = p.getCameraImage(im_width,im_height,view_matrix,proj_matrix)[2]
+    frame = p.getCameraImage(im_width,im_height,view_matrix,proj_matrix,physicsClientId=self.client)[2]
     frame = np.reshape(frame,(im_height,im_width,4))
     self.rendered_img.set_data(frame)
     plt.draw()
-    plt.pause(.00001)
+    plt.waitforbuttonpress(.03)
 
   def close(self):
     p.disconnect(self.client)
